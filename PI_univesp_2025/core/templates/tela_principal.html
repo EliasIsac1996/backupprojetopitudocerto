@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SisAgMusic</title>
+     <link rel="stylesheet" href="../static/css/tela_principal.css">
+     <link rel="stylesheet" href="../static/css/tabelaagd.css">
+     <link rel="stylesheet" href="../static/css/matricula.css">
+     <link rel="stylesheet" href="../static/css/overlay.css">
+     <link rel="stylesheet" href="../static/css/popagd.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="box">
+            <p class="username">Bem vindo {{ request.user.username }}!</p>
+            <button class="btn" id="agendamento" onclick="pop_agend()">Agendamento</button>
+            <Button class="btn" id="matricular" onclick="pop_matri()">Matricular</Button>
+            <button class="btn">Sair</button>
+        </div>
+        <h1>Sistema de Agendamento</h1>
+
+        <div class="mesano">
+            <select class="slc" name="Mês">
+                <option value="01">Janeiro</option>
+                <option value="02">Fevereiro</option>
+                <option value="03">Março</option>
+                <option value="04">Abril</option>
+                <option value="05">Maio</option>
+                <option value="06">Junho</option>
+                <option value="07">Julho</option>
+                <option value="08">Agosto</option>
+                <option value="09">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12">Dezembro</option>
+        
+            </select>       
+            <select class="slc" name="Ano">
+                <option value="25">2025</option>
+                <option value="26">2026</option>
+                <option value="27">2027</option>
+                <option value="28">2028</option>
+                <option value="29">2029</option>
+                <option value="30">2030</option>
+                <option value="31">2031</option>
+                <option value="32">2032</option>
+                <option value="33">2033</option>
+                <option value="34">2034</option>
+                <option value="35">2035</option>
+                <option value="36">2036</option>
+            </select>
+           
+        </div>
+       <div class="agd">
+        <table>
+            <thead>
+                <tr>
+                    <th>Hora/Dia</th>
+                    <th>Segunda-feira</th>
+                    <th>Terça-feira</th>
+                    <th>Quarta-feira</th>
+                    <th>Quinta-feira</th>
+                    <th>Sexta-feira</th>
+                    <th>Sábado</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-info="0800">
+                    <td>08:00 - 09:00</td>
+                    <td>{% if ag_8h_seg %}
+                        {{ ag_8h_seg.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_8h_ter %}
+                        {{ ag_8h_ter.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_8h_qua %}
+                        {{ ag_8h_qua.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_8h_qui %}
+                        {{ ag_8h_qui.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_8h_sex %}
+                        {{ ag_8h_sex.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_8h_sab %}
+                        {{ ag_8h_sab.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                </tr>
+                <tr data-info="0900">
+                    <td>09:00 - 10:00</td>
+                    <td>{% if ag_9h_seg %}
+                        {{ ag_9h_seg.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_9h_ter %}
+                        {{ ag_9h_ter.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_9h_qua %}
+                        {{ ag_9h_qua.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_9h_qui %}
+                        {{ ag_9h_qui.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_9h_sex %}
+                        {{ ag_9h_sex.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_9h_sab %}
+                        {{ ag_9h_sab.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    
+                </tr>
+                <tr data-info="1000">
+                    <td>10:00 - 11:00</td>
+                    <td>{% if ag_10h_seg %}
+                        {{ ag_10h_seg.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_10h_ter %}
+                        {{ ag_10h_ter.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_10h_qua %}
+                        {{ ag_10h_qua.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_10h_qui %}
+                        {{ ag_10h_qui.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_10h_sex %}
+                        {{ ag_10h_sex.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_10h_sab %}
+                        {{ ag_10h_sab.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    
+                </tr>
+                <tr data-info="1100">
+                    <td>11:00 - 12:00</td>
+                    <td>{% if ag_11h_seg %}
+                        {{ ag_11h_seg.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_11h_ter %}
+                        {{ ag_11h_ter.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_11h_qua %}
+                        {{ ag_11h_qua.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_11h_qui %}
+                        {{ ag_11h_qui.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_11h_sex %}
+                        {{ ag_11h_sex.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_11h_sab %}
+                        {{ ag_11h_sab.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    
+                </tr>
+                <tr data-info="1200">
+                    <td>12:00 - 13:00</td>
+                    <td>{% if ag_12h_seg %}
+                        {{ ag_12h_seg.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_12h_ter %}
+                        {{ ag_12h_ter.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_12h_qua %}
+                        {{ ag_12h_qua.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_12h_qui %}
+                        {{ ag_12h_qui.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_12h_sex %}
+                        {{ ag_12h_sex.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_12h_sab %}
+                        {{ ag_12h_sab.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    
+                </tr>
+                <tr data-info="1300">
+                    <td>13:00 - 14:00</td>
+                    <td>{% if ag_13h_seg %}
+                        {{ ag_13h_seg.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_13h_ter %}
+                        {{ ag_13h_ter.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_13h_qua %}
+                        {{ ag_13h_qua.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_13h_qui %}
+                        {{ ag_13h_qui.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_13h_sex %}
+                        {{ ag_13h_sex.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_13h_sab %}
+                        {{ ag_13h_sab.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    
+                </tr>
+                <tr data-info="1400">
+                    <td>14:00 - 15:00</td>
+                    <td>{% if ag_14h_seg %}
+                        {{ ag_14h_seg.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_14h_ter %}
+                        {{ ag_14h_ter.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_14h_qua %}
+                        {{ ag_14h_qua.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_14h_qui %}
+                        {{ ag_14h_qui.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_14h_sex %}
+                        {{ ag_14h_sex.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_14h_sab %}
+                        {{ ag_14h_sab.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    
+                </tr>
+                <tr data-info="1500">
+                    <td>15:00 - 16:00</td>
+                    <td>{% if ag_15h_seg %}
+                        {{ ag_15h_seg.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_15h_ter %}
+                        {{ ag_15h_ter.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_15h_qua %}
+                        {{ ag_15h_qua.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_15h_qui %}
+                        {{ ag_15h_qui.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_15h_sex %}
+                        {{ ag_15h_sex.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_15h_sab %}
+                        {{ ag_15h_sab.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    
+                </tr>
+                <tr data-info="1600">
+                    <td>16:00 - 17:00</td>
+                    <td>{% if ag_16h_seg %}
+                        {{ ag_16h_seg.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_16h_ter %}
+                        {{ ag_16h_ter.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_16h_qua %}
+                        {{ ag_16h_qua.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_16h_qui %}
+                        {{ ag_16h_qui.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_16h_sex %}
+                        {{ ag_16h_sex.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_16h_sab %}
+                        {{ ag_16h_sab.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    
+                </tr>
+                <tr data-info="1700">
+                    <td>17:00 - 18:00</td>
+                    <td>{% if ag_17h_seg %}
+                        {{ ag_17h_seg.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_17h_ter %}
+                        {{ ag_17h_ter.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_17h_qua %}
+                        {{ ag_17h_qua.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_17h_qui %}
+                        {{ ag_17h_qui.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_17h_sex %}
+                        {{ ag_17h_sex.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    <td>{% if ag_17h_sab %}
+                        {{ ag_17h_sab.nome }}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+       </div>
+          
+        
+    
+    <div class="overlay_agd" id="overlay_agend">
+        <button class="x" onclick="close_agend()">X</button>
+        <div class="container_popagd">
+
+        <div class="pop_agd">
+    
+    <h2>Agendamento de Aula</h2>
+<form id="formAgendamento">
+<label for="nome">Nome:</label>
+<input type="text" id="nomeAgendamento" required>
+ 
+      <label for="telefone">Telefone:</label>
+<input type="telefone" id="telefoneAgendamento" required>
+ 
+      <label for="data">Data do Agendamento:</label>
+<input type="date" id="dataAgendamento" required>
+ 
+      <label for="hora">Hora:</label>
+<input type="time" id="horaAgendamento" required>
+ 
+      <button class="btnpopagd" type="submit">Agendar</button>
+<div class="mensagem" id="mensagemSucessoAgendamento"></div>
+</form>
+</div>
+</div>
+    </div> 
+
+    <div class="overlay_matri" id="pop_over">
+        <div class="pop_mat">
+            <button class="x" onclick="close_matri()">X</button>
+            <form action= "/submit_matricula/" method="POST"> {% csrf_token %}
+                <table>
+                    <tr>
+                        <th>Nome Completo</th>
+                        <td><input type="text" name="nome_completo" required></td>
+                </tr>
+                <tr>
+                    <th>Idade</th>
+                    <td><input type="number" name="idade" required></td>
+                </tr>
+                <tr>
+                    <th>Instrumento</th>
+                    <td>
+                        <select name="instrumento" required>
+                            <option value="violão">Violão</option>
+                            <option value="piano">Piano</option>
+                            <option value="bateria">Bateria</option>
+                            <option value="guitarra">Guitarra</option>
+                            <option value="baixo">Baixo</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>E-mail</th>
+                    <td><input type="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <th>Telefone</th>
+                    <td><input type="text" name="telefone" required></td>
+                </tr>
+                <tr>
+                    <th>Observações</th>
+                    <td><textarea name="observacoes" rows="4" placeholder="Insira qualquer observação (opcional)"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <input type="submit" value="Realizar Matrícula">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>Projeto UNIVESP - Grupo 010 Turma 001 - 2025</p>
+</footer>
+    <script>
+        function pop_matri(){
+            document.getElementById("pop_over").style.display = "block";
+        }
+        function close_matri(){
+            document.getElementById("pop_over").style.display = "none";
+        }
+
+        function pop_agend() {
+      document.getElementById("overlay_agend").style.display = "block";
+    }
+ 
+    function close_agend() {
+      document.getElementById("overlay_agend").style.display = "none";
+    }
+
+    const formAgendamento = document.getElementById('formAgendamento');
+const mensagemSucessoAgendamento = document.getElementById('mensagemSucessoAgendamento');
+
+formAgendamento.addEventListener('submit', function(event) {
+  event.preventDefault();
+  const nome = document.getElementById('nomeAgendamento').value;
+  const telefone = document.getElementById('telefoneAgendamento').value;
+  const data = document.getElementById('dataAgendamento').value;
+  const hora = document.getElementById('horaAgendamento').value;
+
+  if (nome && telefone && data && hora) {
+    mensagemSucessoAgendamento.textContent = `Agendamento realizado com sucesso para ${data} às ${hora}!`;
+    formAgendamento.reset();
+  } else {
+    mensagemSucessoAgendamento.textContent = 'Por favor, preencha todos os campos.';
+    mensagemSucessoAgendamento.style.color = 'red';
+  }
+});
+
+
+    </script>
+
+    
+        
+</body>
+</html>
